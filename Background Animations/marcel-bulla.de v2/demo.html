@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DEMO: Background v2 for marcel-bulla.de</title>
+        <script type="text/javascript" src="js/toolbox.js"></script>
+        <script type="text/javascript" src="js/background.js"></script>
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+                const bg = new BackgroundAnimation("img/noise.png", 0.04, 0.1, 320, "white", 20);
+                bg.enable2dContextSupport();
+                bg.launch();
+            });
+        </script>
+    </head>
+    <body style="width: 100%; height: 100%; position: fixed;">
+        <canvas id="canvasBackground" style="filter: blur(1px); position: fixed; top: 0vh; left: 0vw; width: 100%; height: 100%; background: black;"></canvas>
+    </body>
+</html>
