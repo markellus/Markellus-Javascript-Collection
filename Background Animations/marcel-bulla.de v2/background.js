@@ -2,7 +2,7 @@ class Particle {
 
     constructor(fCanvasWidth, fCanvasHeight, iRelativeRadius, strColor) {
         this.x = Math.random() * fCanvasWidth;
-        this.y = Math.random() * fCanvasWidth;
+        this.y = Math.random() * fCanvasHeight;
         this.vx = -1 + Math.random();
         this.vy = -1 + Math.random();
         this.radius = 0;
