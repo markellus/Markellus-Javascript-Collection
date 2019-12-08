@@ -28,7 +28,7 @@ class PageLoadController {
         this.mapCachedPages = new Map();
 
         //Event Bindings
-        this.loadPage = this.loadPage.bind(this);
+        this._loadPage = this._loadPage.bind(this);
         window.onpopstate = this.onPagePop.bind(this);
     }
 
