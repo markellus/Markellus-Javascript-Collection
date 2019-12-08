@@ -2,4 +2,6 @@
 workspace.xml
 
 #Build Directories
+dist/
 Background Animations/marcel-bulla.de v2/build/
+Background Animations/marcel-bulla.de v2/dist/
