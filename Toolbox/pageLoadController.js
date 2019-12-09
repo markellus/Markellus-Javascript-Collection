@@ -29,7 +29,7 @@ class PageLoadController {
 
         //Event Bindings
         this._loadPage = this._loadPage.bind(this);
-        window.onpopstate = this.onPagePop.bind(this);
+        window.onpopstate = this._onPagePop.bind(this);
     }
 
     /**
@@ -67,7 +67,7 @@ class PageLoadController {
         } else {
             //Otherwise send a request to the server and download the page.
             let xhr = new XMLHttpRequest();
-            xhr.onload = this.onPageDataReceived.bind(this, xhr, strUrl);
+            xhr.onload = this._onPageDataReceived.bind(this, xhr, strUrl);
             xhr.open("POST", strUrl);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhr.send("dynamiclink=true");
@@ -127,8 +127,10 @@ class PageLoadController {
             arrElements[i].classList.remove("ani");
             if (bIsIndex) {
                 arrElements[i].classList.remove("small");
+                document.getElementById("content-wrapper").classList.add("index");
             } else {
                 arrElements[i].classList.add("small");
+                document.getElementById("content-wrapper").classList.remove("index");
             }
             if (bAnimate) {
                 arrElements[i].classList.add("ani");
@@ -151,7 +153,7 @@ class PageLoadController {
      * @param xhr    Reference to the XMLHttpRequest
      * @param strUrl URL of the subpage
      */
-    onPageDataReceived(xhr, strUrl) {
+    _onPageDataReceived(xhr, strUrl) {
         if (xhr.status >= 200 && xhr.status < 300) {
             //Mount Cache
             let elCache = document.createElement("cache");
@@ -172,7 +174,7 @@ class PageLoadController {
     /**
      * Called when the browser history is manipulated (e.g. navigating using the forward and backward buttons).
      */
-    onPagePop(event) {
+    _onPagePop(event) {
         if(this.mapCachedPages.has(window.location.pathname)) {
             this._applyPageCache(window.location.pathname, false);
         } else {
