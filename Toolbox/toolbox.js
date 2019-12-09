@@ -53,6 +53,15 @@ function resetAnimation(el) {
 }
 
 /**
+ * @brief Removes warnings that are displayed when javascript is disabled.
+ */
+function removeNoscriptWarnings() {
+    let arrNoscript = document.getElementsByClassName("noscript-warning");
+    for (let i = 0; i < arrNoscript.length; i++) {
+        arrNoscript[i].remove();
+    }
+}
+/**
  * @brief Displays an error message.
  * @param strMessage The error message as a string
  */
